@@ -1,0 +1,49 @@
+{
+  "name": "@gramex/url",
+  "version": "1.0.0",
+  "description": "Converts JSON to form-urlencoded and vice versa",
+  "main": "url.js",
+  "browser": "url.min.js",
+  "scripts": {
+    "build": "esbuild url.ts --format=iife --global-name=gramex.url --bundle --sourcemap --minify --outfile=url.min.js && esbuild url.ts --bundle --platform=node --outfile=url.js",
+    "pretest": "npm run build",
+    "test": "jest"
+  },
+  "files": [
+    "url.*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gramener/gramex-url.git"
+  },
+  "keywords": [
+    "json",
+    "url",
+    "parse",
+    "encode",
+    "encoding",
+    "encoded",
+    "decode",
+    "searchparams",
+    "querystring",
+    "x-www-form-urlencoded",
+    "urlencoded",
+    "urlencode",
+    "form"
+  ],
+  "author": "S Anand <root.node@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gramener/gramex-url/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "homepage": "https://github.com/gramener/gramex-url#readme",
+  "devDependencies": {
+    "esbuild": "^0.14.39",
+    "jest": "^28.1.0",
+    "prettier": "^2.6.2"
+  }
+}
