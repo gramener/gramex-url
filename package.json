@@ -1,6 +1,6 @@
 {
   "name": "@gramex/url",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Converts JSON to form-urlencoded and vice versa",
   "main": "url.js",
   "browser": "url.min.js",
