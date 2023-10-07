@@ -1,16 +1,22 @@
 {
   "name": "@gramex/url",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Converts JSON to form-urlencoded and vice versa",
-  "main": "url.js",
-  "browser": "url.min.js",
+  "type": "module",
+  "module": "dist/url.js",
+  "browser": "dist/url.min.js",
   "scripts": {
-    "build": "esbuild url.ts --format=iife --global-name=gramex.url --bundle --sourcemap --minify --outfile=url.min.js && esbuild url.ts --bundle --platform=node --outfile=url.js",
+    "lint": "npx prettier --write src/*.ts test/*.js",
+    "build-browser": "esbuild src/index.ts --format=iife --global-name=gramex.url --bundle --minify --allow-overwrite --sourcemap --outfile=dist/url.min.js",
+    "build-esm": "esbuild src/index.ts --format=esm --bundle --minify --allow-overwrite --sourcemap --outfile=dist/url.js",
+    "build": "npm run build-browser && npm run build-esm",
+    "prepublishOnly": "npm run lint && npm run build",
     "pretest": "npm run build",
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "files": [
-    "url.*"
+    "README.md",
+    "dist/*"
   ],
   "repository": {
     "type": "git",
@@ -41,9 +47,22 @@
     "registry": "https://registry.npmjs.org/"
   },
   "homepage": "https://github.com/gramener/gramex-url#readme",
+  "prettier": {
+    "printWidth": 120
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "env": {
+      "jest": true
+    },
+    "extends": "eslint:recommended"
+  },
   "devDependencies": {
     "esbuild": "^0.14.39",
     "jest": "^28.1.0",
-    "prettier": "^2.6.2"
+    "prettier": "3"
   }
 }

@@ -1,7 +1,4 @@
-TODO
+TODO*
 .vscode
 node_modules/
-
-# Don't commit ignored files
-*.min.*
-url.js
+dist/
